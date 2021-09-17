@@ -19,21 +19,35 @@
   <script type="module">import S from '/js/ennui.mjs';
    ((d,f,w) => d.addEventListener("DOMContentLoaded", () => ((_,g,b,[l,x]) => ($ => ([
     [_, 'timeupdate', () => x.style.transform = 'rotate('+_.currentTime/_.duration+'turn)'],
-    [_, 'ended', $],
+    [_, 'ended', $.next],
     [_, 'volumechange', () => x.style.opacity = _.volume],
     [_, 'pause', () => (b.remove('play'), b.add('pause'))],
     [_, 'play',  () => (b.remove('pause'), b.add('play'))],
     [_, 'loadeddata', () => l.remove()],
-    [d, 'click', e => _.paused ? _.play().catch(console.warn) : _.pause()]
-   ].forEach(([o,...e]) => o.addEventListener(...e)), $()))(e => g.next().value.then(r =>
-     r.json()).then(({name,body}) => (x.title = name,
-     _.src = atob('ZGF0YTphdWRpby9vZ2c7YmFzZTY0LA==')+body,_.play())).catch(console.warn)
-    ))(new Audio,w.w(S),d.body.classList,['lampe','cross'].map(d.getElementById.bind(d)))
-   ))(document,(c,b=1,a=0)=>c<b?c>a?c:a:b,{*r(b,r=Math.random){
-    for(let q;q=b.reverse().length;yield*b)while
-    (--q)(d=>[b[q],b[d]]=[b[d],b[q]])(0|q*r())},
-   *w(g,s={cache:'force-cache'},u='/js/',l='.json'){
-   for(const r of this.r(g))yield fetch(u+r+l,s)}});
+    [d, 'click', $.tggl],
+    [d, 'keydown', e => (e = e.which,
+     47<e&&e<58 ? $.mset((e-48)/10) : // yeah, should be .key
+     (([f,...p])=>$[f]&&$[f](...p))({
+      37:['madd',-10],38:['vadd',.1],
+      39:['madd',10],40:['vadd',-.1],
+      32:['tggl',null]}[e]||[]))]
+   ].forEach(([o,...e]) => o.addEventListener(...e)), $.next()))({
+    tggl: e => _.paused ? _.play().catch(console.warn) : _.pause(),
+    vadd: e => _.volume = f(_.volume+e),
+    madd: e => _.currentTime = f(_.currentTime+e,_.duration||0),
+    mset: e => _.currentTime = f(e)*_.duration,
+    next: e => g.next().value
+     .then(r => r.json())
+     .then(({name,body}) => (
+      x.title = name,
+      _.src = atob('ZGF0YTphdWRpby9vZ2c7YmFzZTY0LA==')+body,
+      _.play()))
+     .catch(console.warn)
+    }))(new Audio,w.w(S),d.body.classList,['lampe','cross'].map(d.getElementById.bind(d))
+    )))(document,(c,b=1,a=0)=>c<b?c>a?c:a:b,{*r(b,r=Math.random,s='reverse'){for(let q;q=
+    b[s]().length;yield*b)while(--q)(d=>[b[q],b[d]]=[b[d],b[q]])(0|q*r())},*w(g){g=this.f
+    (g);let c=g.next().value;for(const r of g){yield c;c=r;}},*f(g,s={cache:'force-cache'
+    },u='/js/',l='.json'){for(const r of this.r(g))yield fetch(u+r+l,s)}});
   </script>
   <style>
    @keyframes meimei{from{filter:hue-rotate(0)}to{filter:hue-rotate(-90deg)}}
