@@ -25,12 +25,10 @@
     [_, 'play',  () => (b.remove('pause'), b.add('play'))],
     [_, 'loadeddata', () => l.remove()],
     [d, 'click', $.tggl],
-    [d, 'keydown', e => (e = e.which,
-     47<e&&e<58 ? $.mset((e-48)/10) : // yeah, should be .key
-     (([f,...p])=>$[f]&&$[f](...p))({
-      37:['madd',-10],38:['vadd',.1],
-      39:['madd',10],40:['vadd',-.1],
-      32:['tggl',null]}[e]||[]))]
+    [d, 'keydown', ({key:e}) => /^\d$/.test(e)?$.mset(e/10):(([f,...p])=>$[f]&&$[f](...p))({
+     'ArrowRight':['madd',10],'ArrowDown':['vadd',-.1],
+     'ArrowLeft':['madd',-10],'ArrowUp':['vadd',.1],' '
+     :['tggl',null]}[e]||[])]
    ].forEach(([o,...e]) => o.addEventListener(...e)), $.next()))({
     tggl: e => _.paused ? _.play().catch(console.warn) : _.pause(),
     vadd: e => _.volume = f(_.volume+e),
