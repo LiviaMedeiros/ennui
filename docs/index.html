@@ -54,16 +54,15 @@
    #mercury{width:100%;height:100%;text-align:center;position:fixed;background:fixed #fff url(/img/gin.webp) left bottom no-repeat;animation:90s linear 0s infinite alternate none paused meimei}
    .play #mercury{animation-play-state:running}
    #lampe{width:100%;height:100%;position:fixed;background:rgba(0,0,0,.5);cursor:wait;z-index:999}
-   #ennui{position:fixed;width:240px;height:240px;border-radius:50%;left:50%;top:50%;margin-top:-120px;margin-left:-120px;opacity:.8;background:radial-gradient(#eee 0%,transparent 80%,transparent 100%);transition:transform .1s}
-   #ennui:hover{transform:scale(1.05);filter:drop-shadow(0 0 4px #edf)}
-   #cross {width:240px;height:320px;position:fixed;left:50%;top:50%;margin-left:-120px;margin-top:-190px;cursor:none;transition:1s linear all;transform-origin:50% 59.375%}
-   .pause #cross {filter:grayscale(1)}
-   #vect {fill:#000;stroke:#408;stroke-width:3px}
+   #ennui{position:fixed;width:240px;height:240px;border-radius:50%;left:80%;top:50%;margin-top:-120px;margin-left:-120px;opacity:.8;background:radial-gradient(#eee 0%,transparent 80%,transparent 100%)}
+   #cross{width:240px;height:320px;position:fixed;left:80%;top:50%;margin-left:-120px;margin-top:-190px;cursor:none;transition:1s linear all;transform-origin:50% 59.375%}
+   .pause #cross{filter:grayscale(1)}
+   #vect{fill:#000;stroke:#408;stroke-width:3px}
   </style>
  </head>
  <body>
   <div id="mercury"></div>
   <div id="lampe"></div>
-  <div id="ennui"><div id="cross"><svg id="vect" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 640"><path id="way" d="m220 56c-7.177 0-13.602 3.163-18 8.156.66-.083 1.317-.156 2-.156 8.837 0 16 7.163 16 16v280h-160c-8.837 0-16-7.163-16-16 0-.683.073-1.34.156-2-4.993 4.398-8.156 10.823-8.156 18 0 8.35 4.281 15.701 10.75 20-6.469 4.299-10.75 11.65-10.75 20 0 7.177 3.163 13.602 8.156 18-.083-.66-.156-1.317-.156-2 0-8.837 7.163-16 16-16h160v160c0 8.837-7.163 16-16 16-.683 0-1.34-.073-2-.156 4.398 4.993 10.823 8.156 18 8.156 8.35 0 15.701-4.281 20-10.75 4.299 6.469 11.65 10.75 20 10.75 7.177 0 13.602-3.163 18-8.156-.66.083-1.317.156-2 .156-8.837 0-16-7.163-16-16v-160h160c8.837 0 16 7.163 16 16 0 .683-.073 1.34-.156 2 4.993-4.398 8.156-10.823 8.156-18 0-8.35-4.281-15.701-10.75-20 6.469-4.299 10.75-11.65 10.75-20 0-7.177-3.163-13.602-8.156-18 .083.66.156 1.317.156 2 0 8.837-7.163 16-16 16h-160v-280c0-8.837 7.163-16 16-16 .683 0 1.34.073 2 .156-4.398-4.993-10.823-8.156-18-8.156-8.35 0-15.701 4.281-20 10.75-4.299-6.469-11.65-10.75-20-10.75m16 24h8v296h176v8h-176v172.12 3.063.813h-8v-.813-3.063-172.12h-176v-8h176v-296" /></svg></div></div>
+  <div id="ennui"><div id="cross"><svg id="vect" viewBox="0 0 480 640"><path id="way" d="M220 80a16 16 0 0 0-18-16a24 24 0 0 1 38 0a24 24 0 0 1 38 0a16 16 0 0 0-18 16v280h160a16 16 0 0 0 16-18a24 24 0 0 1 0 38a24 24 0 0 1 0 38a16 16 0 0 0-16-18h-160v160a16 16 0 0 0 18 16a24 24 0 0 1-38 0a24 24 0 0 1-38 0a16 16 0 0 0 18-16v-160h-160a16 16 0 0 0-16 18a24 24 0 0 1 0-38a24 24 0 0 1 0-38a16 16 0 0 0 16 18h160zM235 80v295h-175v10h175v175h10v-175h175v-10h-175v-295z"/></svg></div></div>
  </body>
 </html>
