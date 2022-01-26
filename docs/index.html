@@ -23,11 +23,11 @@
     [_, 'volumechange', () => x.style.opacity = _.volume],
     [_, 'pause', () => (b.remove('play'), b.add('pause'))],
     [_, 'play',  () => (b.remove('pause'), b.add('play'))],
-    [_, 'loadeddata', () => l.remove()],
+    [_, 'loadeddata', l.remove.bind(l)],
     [d, 'click', $.tggl],
     [d, 'keydown', ({key:e}) => /^\d$/.test(e)?$.mset(e/10):(([f,...p])=>$[f]&&$[f](...p))({
-     'ArrowRight':['madd',10],'ArrowDown':['vadd',-.1],
-     'ArrowLeft':['madd',-10],'ArrowUp':['vadd',.1],' '
+     ArrowRight:['madd',10],ArrowDown:['vadd',-.1],
+     ArrowLeft:['madd',-10],ArrowUp:['vadd',.1],' '
      :['tggl',null]}[e]||[])]
    ].forEach(([o,...e]) => o.addEventListener(...e)), $.next()))({
     tggl: e => _.paused ? _.play().catch(console.warn) : _.pause(),
@@ -42,10 +42,10 @@
       _.play()))
      .catch(console.warn)
     }))(new Audio,w.w(S),d.body.classList,['lampe','cross'].map(d.getElementById.bind(d))
-    )))(document,(c,b=1,a=0)=>c<b?c>a?c:a:b,{*r(b,r=Math.random,s='reverse'){for(let q;q=
-    b[s]().length;yield*b)while(--q)(d=>[b[q],b[d]]=[b[d],b[q]])(0|q*r())},*w(g){g=this.f
-    (g);let c=g.next().value;for(const r of g){yield c;c=r;}},*f(g,s={cache:'force-cache'
-    },u='/js/',l='.json'){for(const r of this.r(g))yield fetch(u+r+l,s)}});
+    ),{once:true}))(document,(c,b=1,a=0)=>c<b?c>a?c:a:b,{*r(b,r=Math.random,s='reverse'){
+    for(let q;q=b[s]().length;yield*b)while(--q)(d=>[b[q],b[d]]=[b[d],b[q]])(0|q*r());},*
+    w(g){g=this.f(g);let c=g.next().value;for(const r of g){yield c;c=r;}},*f(g,s={cache:
+    'force-cache'},u='/js/',l='.json'){for(const r of this.r(g))yield fetch(u+r+l,s);}});
   </script>
   <style>
    @keyframes meimei{from{filter:hue-rotate(0)}to{filter:hue-rotate(-90deg)}}
