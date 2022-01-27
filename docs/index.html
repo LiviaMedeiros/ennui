@@ -25,11 +25,12 @@
     [_, 'play',  () => (b.remove('pause'), b.add('play'))],
     [_, 'loadeddata', l.remove.bind(l)],
     [d, 'click', $.tggl],
+    [d, 'wheel', ({deltaY:e}) => $.vadd(-e/2000)],
     [d, 'keydown', ({key:e}) => /^\d$/.test(e)?$.mset(e/10):(([f,...p])=>$[f]&&$[f](...p))({
      ArrowRight:['madd',10],ArrowDown:['vadd',-.1],
      ArrowLeft:['madd',-10],ArrowUp:['vadd',.1],' '
      :['tggl',null]}[e]||[])]
-   ].forEach(([o,...e]) => o.addEventListener(...e)), $.next()))({
+   ].forEach(([o,...e]) => o.addEventListener(...e, {passive:true})), $.next()))({
     tggl: e => _.paused ? _.play().catch(console.warn) : _.pause(),
     vadd: e => _.volume = f(_.volume+e),
     madd: e => _.currentTime = f(_.currentTime+e,_.duration||0),
